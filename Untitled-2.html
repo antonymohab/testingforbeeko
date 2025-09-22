@@ -45,7 +45,8 @@
       </div>
 
       <div class="card">
-        <form id="bookingForm">
+        <!-- ✅ تم تعديل الفورم ليشتغل مع الصور -->
+        <form id="bookingForm" method="post" enctype="multipart/form-data">
           <h3 style="margin-bottom:8px;color:#0b2a3b;text-align:right">احجز معاينة أو مكالمة</h3>
           <p class="muted" style="text-align:right">اختر ما إذا كانت المعاينة في الموقع أم مكالمة عبر الفيديو وأرسل صور السيارة لتقييم مبدئي.</p>
 
@@ -99,7 +100,7 @@
 
           <label>أرسل صور السيارة (أعلى إلى 6 صور) *</label>
           <div class="upload">
-            <input type="file" name="photos" accept="image/*" multiple style="border:none;background:transparent">
+            <input type="file" name="photos" accept="image/*" multiple required>
             <div class="muted">اسحب الصور هنا أو اضغط لاختيار ملفات</div>
           </div>
 
@@ -185,24 +186,23 @@
 
       fetch("https://script.google.com/macros/s/AKfycbxDWLpU-y0P0NDHihsH0ahsbNkQ13ok2x0Z3nnTInoJVojCRLrq_RwK0sv-gjaCavRT/exec", {
         method: "POST",
-        body: new FormData(this)
+        body: formData
       })
       .then(response => response.json())
       .then(data => {
         if(data.result === "success"){
-          alert("تم إرسال الطلب. سنعاود التواصل قريباً!");
+          alert("✅ تم إرسال الطلب. سنعاود التواصل قريباً!");
           this.reset();
         } else {
-          alert("حدث خطأ أثناء إرسال الطلب.");
+          alert("⚠️ حدث خطأ أثناء إرسال الطلب.");
           console.error(data);
         }
       })
       .catch(error => {
-        alert("حدث خطأ أثناء إرسال الطلب.");
+        alert("⚠️ حدث خطأ أثناء إرسال الطلب.");
         console.error(error);
       });
     });
   </script>
 </body>
 </html>
-
