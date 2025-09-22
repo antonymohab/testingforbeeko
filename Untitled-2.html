@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Beeko — تصليح سيارات | تصميم تجريبي</title>
+  <style>
+    :root{
+      --blue:#0b57b5; --blue-2:#073e86; --soft:#f5f8ff; --accent:#0a66ff;
+      --whatsapp:#25d366; --facebook:#1877f2; --instagram:#e4405f; --tiktok:#000000;
+    }
+    *{box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans Arabic",Tahoma,Arial; margin:0; color:#0b2a3b}
+    .hero{display:flex;align-items:center;gap:40px;padding:48px;min-height:70vh;background:linear-gradient(90deg,var(--blue) 0%,var(--blue-2) 100%);color:white}
+    .container{width:1200px;max-width:94%;margin:0 auto;display:flex;align-items:stretch;flex-direction:column}
+    .card{background:white;border-radius:18px;padding:28px;box-shadow:0 10px 30px rgba(3,22,66,0.12);width:100%;margin-top:24px}
+    form label{display:block;font-size:13px;color:#567; margin-bottom:6px;text-align:right}
+    input[type=text], input[type=email], input[type=tel], select, textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #e6eefc;background:#fbfdff;font-size:15px;text-align:right}
+    .row{display:flex;gap:12px}
+    .row .col{flex:1}
+    .btn{display:inline-block;padding:12px 22px;border-radius:10px;background:var(--accent);color:white;border:none;font-weight:600;cursor:pointer}
+    h1{font-size:34px;margin:0 0 18px}
+    p.lead{font-size:18px;line-height:1.6;opacity:0.95}
+    .features{margin-top:22px}
+    .feature{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+    .feature strong{display:block}
+    @media (max-width:900px){.hero{flex-direction:column;padding:28px} .container{flex-direction:column;gap:20px} .card{width:100%}}
+    .upload{border:2px dashed #e6eefc;padding:14px;border-radius:10px;text-align:center;color:#6b7b96}
+    .muted{color:#b0bfd6;font-size:14px}
+    .socials{display:flex;justify-content:center;gap:16px;margin-top:24px}
+    .socials a{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;color:white;font-size:20px;text-decoration:none}
+    .socials a.facebook{background:var(--facebook)}
+    .socials a.whatsapp{background:var(--whatsapp)}
+    .socials a.instagram{background:var(--instagram)}
+    .socials a.tiktok{background:var(--tiktok)}
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <section class="hero">
+    <div class="container">
+      <div style="flex:1;color:white;padding:6px 32px">
+        <h1>Beeko — تصليح السيارات وكأنها جديدة</h1>
+        <p class="lead">نقوم بتصليح الحوادث والصيانة الشاملة وتقديم السيارة للعملاء بحالة «كما لو كانت جديدة» — زيِّنها، أعد طلاءها، وأصلح كل شيء صحيح.</p>
+      </div>
+
+      <div class="card">
+        <form id="bookingForm">
+          <h3 style="margin-bottom:8px;color:#0b2a3b;text-align:right">احجز معاينة أو مكالمة</h3>
+          <p class="muted" style="text-align:right">اختر ما إذا كانت المعاينة في الموقع أم مكالمة عبر الفيديو وأرسل صور السيارة لتقييم مبدئي.</p>
+
+          <div class="row">
+            <div class="col">
+              <label>الاسم الكامل *</label>
+              <input type="text" name="name" placeholder="الاسم الكامل" required>
+            </div>
+            <div class="col">
+              <label>رقم الموبايل *</label>
+              <input type="tel" name="phone" placeholder="رقم الموبايل" required>
+            </div>
+          </div>
+
+          <label>الإيميل</label>
+          <input type="email" name="email" placeholder="البريد الإلكتروني (اختياري)">
+
+          <label>نوع السيارة *</label>
+          <select id="car_brand" name="car_brand" required>
+            <option value="" selected disabled>اختر نوع السيارة</option>
+            <option>أوبل</option>
+            <option>أودي</option>
+            <option>بي إم دبليو</option>
+            <option>بيجو</option>
+            <option>بورش</option>
+            <option>بروتون</option>
+            <option>تويوتا</option>
+            <option>جيلي</option>
+            <option>جيب</option>
+            <option>رينو</option>
+            <option>سيتروين</option>
+            <option>سكودا</option>
+            <option>سوزوكي</option>
+            <option>شيري</option>
+            <option>شيفروليه</option>
+            <option>فولكس فاجن</option>
+            <option>فورد</option>
+            <option>فيات</option>
+            <option>كيا</option>
+            <option>لاند روفر</option>
+            <option>مازدا</option>
+            <option>مرسيدس</option>
+            <option>ميتسوبيشي</option>
+            <option>نيسان</option>
+            <option>هيونداي</option>
+            <option>هوندا</option>
+            <option>إم جي</option>
+          </select>
+
+          <label>موديل السيارة *</label>
+          <select id="car_model" name="car_model" required>
+            <option value="">— اختر الموديل —</option>
+          </select>
+
+          <label>سنة العربية *</label>
+          <select id="car_year" name="car_year" required>
+            <option value="" selected disabled>اختر سنة العربية</option>
+            <script>
+              for(let y=2025;y>=1998;y--){
+                document.write(`<option>${y}</option>`);
+              }
+            </script>
+          </select>
+
+          <label>نوع الزيارة *</label>
+          <select id="visit_type" name="type" required>
+            <option value="" selected disabled>اختر نوع الزيارة</option>
+            <option value="onsite">زيارة لمعاينة السيارة</option>
+            <option value="zoom">مكالمة Zoom / فيديو</option>
+          </select>
+
+          <div id="addressField" style="display:none">
+            <label>العنوان *</label>
+            <input type="text" name="address" placeholder="شارع، مدينة، حي">
+          </div>
+
+          <label>أرسل صور السيارة (أعلى إلى 6 صور) *</label>
+          <div class="upload">
+            <input type="file" name="photos" accept="image/*" multiple style="border:none;background:transparent">
+            <div class="muted">اسحب الصور هنا أو اضغط لاختيار ملفات</div>
+          </div>
+
+          <label>ملاحظات إضافية</label>
+          <textarea name="notes" rows="3" placeholder="مثلاً: نوع السيارة، سنة الصنع، وصف الخلل"></textarea>
+
+          <div style="display:flex;gap:10px;justify-content:flex-end;align-items:center;margin-top:10px">
+            <button class="btn" type="submit">إرسال الطلب</button>
+          </div>
+        </form>
+
+        <div class="socials">
+          <a href="https://api.whatsapp.com/send?phone=201226451545&text=مرحبًا! لدي استفسار" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.facebook.com/peter.ayman.509" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/peterayman.p/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" target="_blank" class="tiktok"><i class="fab fa-tiktok"></i></a>
+        </div>
+
+        <p class="muted" style="margin-top:14px;font-size:13px;text-align:right">بإرسال هذا النموذج سنعاود التواصل لتأكيد الموعد وتحديد تفاصيل الفحص.</p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Car Models
+    const carModels = {
+      "مرسيدس": ["A-Class", "B-Class", "C180", "C200", "CLA", "E-Class", "GLC", "GLS", "S-Class"],
+      "تويوتا": ["كورولا", "كامري", "ياريس", "فورتشنر", "هايلوكس", "راف4", "برادو"],
+      "هيونداي": ["إلنترا", "توسان", "أكسنت", "سوناتا", "كريتا", "كونا"],
+      "كيا": ["سيراتو", "سبورتاج", "بيكانتو", "أوبتيما", "سول", "سورينتو"],
+      "نيسان": ["صني", "قشقاي", "باترول", "تييدا", "إكس تريل", "جوكا"],
+      "بي إم دبليو": ["الفئة 1", "الفئة 3", "الفئة 5", "الفئة 7", "X1", "X3", "X5", "X6"],
+      "رينو": ["لوجان", "سانديرو", "كادجار", "ميجان", "كوليوس"],
+      "شيفروليه": ["أفيو", "لانوس", "أوبترا", "ماليبو", "كابتيفا", "تاهو"],
+      "بيجو": ["301", "308", "408", "508", "2008", "3008", "5008"],
+      "هوندا": ["سيفيك", "أكورد", "سيتي", "CR-V", "HR-V"],
+      "أودي": ["A3", "A4", "A6", "A8", "Q3", "Q5", "Q7", "Q8"],
+      "أوبل": ["أسترا", "كورسا", "إنسيجنيا", "موكا", "كروس لاند", "جراند لاند"],
+      "جيب": ["رانجلر", "جراند شيروكي", "كومباس", "رينجيد", "شيروكي"],
+      "فولكس فاجن": ["بولو", "جولف", "باسات", "تيجوان", "توران", "طوارق"],
+      "سكودا": ["أوكتافيا", "سوبرب", "فابيا", "كودياك", "كاروك", "رابيد"],
+      "فيات": ["تيبو", "بونتو", "500", "500X", "دوبلو", "برافو"],
+      "إم جي": ["MG5", "MG6", "ZS", "RX5", "HS"],
+      "فورد": ["فييستا", "فوكس", "فيوجن", "إكسبلورر", "إكسبديشن", "إيدج", "Kuga"]
+    };
+
+    const brandSelect = document.getElementById("car_brand");
+    const modelSelect = document.getElementById("car_model");
+    brandSelect.addEventListener("change", function() {
+      const selectedBrand = this.value;
+      modelSelect.innerHTML = '<option value="">— اختر الموديل —</option>';
+      if(carModels[selectedBrand]){
+        carModels[selectedBrand].forEach(model=>{
+          const option = document.createElement("option");
+          option.value = model;
+          option.textContent = model;
+          modelSelect.appendChild(option);
+        });
+      }
+    });
+
+    // Show address field only for onsite
+    const visitType = document.getElementById("visit_type");
+    const addressField = document.getElementById("addressField");
+    visitType.addEventListener("change", function() {
+      addressField.style.display = this.value==="onsite"?"block":"none";
+      if(this.value==="onsite") addressField.querySelector("input").required = true;
+      else addressField.querySelector("input").required = false;
+    });
+
+    // Form submit to Google Sheets
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  fetch("YOUR_WEB_APP_URL_HERE", { // Replace with your deployed Apps Script URL
+    method: "POST",
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if(data.result === "success"){
+      alert("تم إرسال الطلب. سنعاود التواصل قريباً!");
+      this.reset();
+    } else {
+      alert("حدث خطأ أثناء إرسال الطلب.");
+      console.error(data);
+    }
+  })
+  .catch(error => {
+    alert("حدث خطأ أثناء إرسال الطلب.");
+    console.error(error);
+  });
+});
+
+  </script>
+</body>
+</html>
