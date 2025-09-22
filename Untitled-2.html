@@ -185,7 +185,7 @@
 
       fetch("https://script.google.com/macros/s/AKfycbxDWLpU-y0P0NDHihsH0ahsbNkQ13ok2x0Z3nnTInoJVojCRLrq_RwK0sv-gjaCavRT/exec", {
         method: "POST",
-        body: formData
+        body: new FormData(this)
       })
       .then(response => response.json())
       .then(data => {
@@ -205,3 +205,4 @@
   </script>
 </body>
 </html>
+
