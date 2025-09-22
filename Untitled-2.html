@@ -103,11 +103,6 @@
           <label>سنة العربية *</label>
           <select id="car_year" name="car_year" required>
             <option value="" selected disabled>اختر سنة العربية</option>
-            <script>
-              for(let y=2025;y>=1998;y--){
-                document.write(`<option>${y}</option>`);
-              }
-            </script>
           </select>
 
           <label>نوع الزيارة *</label>
@@ -149,6 +144,15 @@
   </section>
 
   <script>
+    // Fill years dropdown dynamically
+    const yearSelect = document.getElementById("car_year");
+    for (let y = 2025; y >= 1998; y--) {
+      const opt = document.createElement("option");
+      opt.value = y;
+      opt.textContent = y;
+      yearSelect.appendChild(opt);
+    }
+
     // Car Models
     const carModels = {
       "مرسيدس": ["A-Class", "B-Class", "C180", "C200", "CLA", "E-Class", "GLC", "GLS", "S-Class"],
@@ -197,30 +201,29 @@
 
     // Form submit to Google Sheets
     document.getElementById("bookingForm").addEventListener("submit", function(e) {
-  e.preventDefault();
+      e.preventDefault();
 
-  const formData = new FormData(this);
+      const formData = new FormData(this);
 
-  fetch("YOUR_WEB_APP_URL_HERE", { // Replace with your deployed Apps Script URL
-    method: "POST",
-    body: formData
-  })
-  .then(response => response.json())
-  .then(data => {
-    if(data.result === "success"){
-      alert("تم إرسال الطلب. سنعاود التواصل قريباً!");
-      this.reset();
-    } else {
-      alert("حدث خطأ أثناء إرسال الطلب.");
-      console.error(data);
-    }
-  })
-  .catch(error => {
-    alert("حدث خطأ أثناء إرسال الطلب.");
-    console.error(error);
-  });
-});
-
+      fetch("YOUR_WEB_APP_URL_HERE", { // Replace with your deployed Apps Script URL
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if(data.result === "success"){
+          alert("تم إرسال الطلب. سنعاود التواصل قريباً!");
+          this.reset();
+        } else {
+          alert("حدث خطأ أثناء إرسال الطلب.");
+          console.error(data);
+        }
+      })
+      .catch(error => {
+        alert("حدث خطأ أثناء إرسال الطلب.");
+        console.error(error);
+      });
+    });
   </script>
 </body>
 </html>
