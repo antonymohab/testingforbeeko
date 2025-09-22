@@ -67,11 +67,19 @@
           <div class="row">
             <div class="col">
               <label>الاسم الكامل *</label>
-              <input type="text" name="name" placeholder="الاسم الكامل" required>
+            <input type="text" name="name" placeholder="الاسم الكامل" 
+       minlength="10" 
+       title="الاسم يجب أن يكون ثلاثي" 
+       required>
+
             </div>
             <div class="col">
               <label>رقم الموبايل *</label>
-              <input type="tel" name="phone" placeholder="رقم الموبايل" required>
+            <input type="tel" name="phone" placeholder="رقم الموبايل" 
+       pattern="\d{11}" 
+       title="يجب أن يحتوي رقم الموبايل على 11 رقمًا بالضبط" 
+       required>
+
             </div>
           </div>
 
